@@ -48,7 +48,7 @@ long rng(int range) {
 	return rand() % range;
 }
 
-void test_stack() {
+void testStack() {
 
 	const int STACK_SIZE = 3;
 	ele* stack = 0; // Inicjalizacja zmiennej stosu

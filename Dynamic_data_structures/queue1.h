@@ -3,7 +3,7 @@
 // Part II of Algorithms and Data Structures
 // Uniwersytet Slaski 
 
-// Exercise 2 , 12 - Queue 
+// Exercise 2 , 12 , 13 - Queue 
 
 #pragma once
 #include "stack1.h"
@@ -17,5 +17,8 @@ int firstEl(ele* poczkol);
 bool isEmptyQ(ele* poczkol);
 
 void joinQueues(ele* &poczkol, ele* &konkol, ele* &pocznast, ele* &konnast); // Exercise 12
+void reverseQueue(ele* &poczkol, ele* &konkol); // Exercise 13
 
-void test_queue() ;
+
+void testQueue();
+void testQueueE13();

@@ -3,7 +3,7 @@
 // Part II of Algorithms and Data Structures
 // Uniwersytet Slaski 
 
-// Exercise 2 , 12 - Queue 
+// Exercise 2 , 12 , 13 - Queue 
 
 #include "queue1.h"
 
@@ -32,7 +32,7 @@ void add(ele* &poczkol, ele* &konkol, int x) {
 	Funkcja pobiera dane z poczatku kolejki oraz kasuje obiekt po zaczytaniu danych.
 	Jezeli napotka koniec to po zwroceniu danych zwolni pamiec zarowno poczatku jak i konca kolejki,
 	zwracajac kolejke w stan pusty, jak bezposrednio po utworzeniu.
-	
+
 */
 int next(ele* &poczkol, ele* &konkol) {
 
@@ -77,7 +77,7 @@ bool isEmptyQ(ele* poczkol) {
 }
 
 // Exercise 12
-void test_queue() {
+void testQueue() {
 
 	const int QUEUE_MAX = 5;
 	const int ADD_ELEMENTS = 5;
@@ -182,3 +182,65 @@ void joinQueues(ele* &poczkol, ele* &konkol, ele* &pocznast, ele* &konnast) {
 }
 
 
+// Exercise 13
+
+void testQueueE13() {
+
+	const int QUEUE_MAX = 5;
+	const int ADD_ELEMENTS = 5;
+
+	ele *head = nullptr;
+	ele *tail = nullptr;
+
+	// Zapelnienie kolejki wartosciami
+	cout << "Zapelnienie kolejki " << QUEUE_MAX << " wartosciami." << endl;
+	for (int i = 0; i < QUEUE_MAX; i++) {
+		add(head, tail, i);
+	}
+
+	reverseQueue(head, tail);
+
+	cout << "Zdjecie elemntow z odwroconej kolejki." << endl;
+	for (int i = 0; i < QUEUE_MAX + ADD_ELEMENTS; i++) {
+		cout << next(head, tail) << " ";
+	}
+	cout << endl;
+}
+
+// Zapisz funkcjê odwracaj¹c¹ porz¹dek w kolejce.
+void reverseQueue(ele* &poczkol, ele* &konkol) {
+
+	ele* current = new ele;
+	ele* prev = new ele;
+
+	ele* newHead = konkol;
+	ele* newEnd = poczkol;
+
+	current = poczkol;
+
+	while (poczkol->nast) {
+
+		while (current->nast) {
+			prev = current;
+			current = current->nast;
+		}
+
+		prev->nast = nullptr;
+		current->nast = prev;
+		current = poczkol;
+	}
+
+	poczkol = newHead;
+	konkol = newEnd;
+
+	current = nullptr;
+	prev = nullptr;
+	newHead = nullptr;
+	newEnd = nullptr;
+
+	delete current;
+	delete prev;
+	delete newHead;
+	delete newEnd;
+
+}

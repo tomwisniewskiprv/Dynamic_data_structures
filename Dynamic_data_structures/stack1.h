@@ -25,6 +25,6 @@ int pop(ele* &stos);
 int peek(ele* stos);
 bool isEmpty(ele* stos);
 
-void test_stack();
+void testStack();
 void stack_commands(string str);
 void destroy_stack(ele* &stos);

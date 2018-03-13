@@ -17,12 +17,17 @@ int main() {
 	//ex1 , 11
 	cout << "==============================================" << endl;
 	cout << "Zadanie 1 , 11:" << endl;
-	test_stack();
+	testStack();
 	
-	//ex2
+	//ex2 , 12
 	cout << "==============================================" << endl;
-	cout << "Zadanie 2:" << endl;
-	test_queue();
+	cout << "Zadanie 2 , 12:" << endl;
+	testQueue();
+
+	//ex 13
+	cout << "==============================================" << endl;
+	cout << "Zadanie 13:" << endl;
+	testQueueE13();
 
 	//ex3
 	cout << "==============================================" << endl;
