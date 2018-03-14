@@ -51,7 +51,7 @@ long rng(int range) {
 void testStack() {
 
 	const int STACK_SIZE = 3;
-	ele* stack = 0; // Inicjalizacja zmiennej stosu
+	ele* stack = nullptr; // Inicjalizacja zmiennej stosu
 	cout << "----------------------------------------------" << endl;
 	cout << "Utworzenie pustego stosu." << endl;
 	cout << stack << endl;
