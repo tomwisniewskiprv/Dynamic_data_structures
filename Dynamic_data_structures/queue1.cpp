@@ -244,3 +244,5 @@ void reverseQueue(ele* &poczkol, ele* &konkol) {
 	delete newEnd;
 
 }
+
+

@@ -3,7 +3,7 @@
 // Part II of Algorithms and Data Structures
 // Uniwersytet Slaski 
 
-// Exercises 1 , 3 , 4 , 11 - ele
+// Exercises 1 , 3 , 4 , 5 , 10 , 11 
 
 #include "stack1.h"
 
@@ -66,6 +66,9 @@ void testStack() {
 	}
 	cout << endl;
 
+	cout << "----------------------------------------------" << endl;
+	cout << "Zliczenie elementow na stosie :" << countStackElements(stack) << endl;
+
 	// Zdjecie elementow ze stosu
 	cout << "----------------------------------------------" << endl;
 	cout << "Proba zdjecia funkcja POP " << STACK_SIZE + 1 << " elementow." << endl;
@@ -96,6 +99,66 @@ void stack_commands(string str) {
 	}
 	cout << endl;
 }
+
+// ==============================================
+// Exercise  5
+
+struct s2q {
+	ele* sIn = nullptr;
+	ele* sOut = nullptr;
+};
+
+
+// adds new value at the end (push @ end)
+void s2qEnqueue(s2q* &que, int value) {
+	push(que->sIn, value);
+}
+
+// returns first value in queue (pop @ front)
+int  s2qDequeue(s2q* &que) {
+	while (que->sIn) {
+		push(que->sOut, pop(que->sIn));
+	}
+
+	return pop(que->sOut);
+}
+
+void stacks2queue() {
+
+	s2q *s2queue = new s2q;
+	const int STACK_SIZE = 5;
+
+	cout << "Zapelnianie kolejki zlozonej z dwoch stosow " << STACK_SIZE << " kolejnymi wartosciami." << endl;
+
+	for (int i = 0; i < STACK_SIZE; i++) {
+		s2qEnqueue(s2queue, i);
+	}
+
+	cout << "Peek at sIn : " << peek(s2queue->sIn) << endl ;
+	cout << "Proba zdjecia z kolejki zlozonej z dwoch stosow wiekszej liczby elementow." << endl;
+
+	for (int i = 0; i < STACK_SIZE + 2; i++) {
+		cout << s2qDequeue(s2queue) << " ";
+	}
+	cout << endl;
+}
+
+//============================================== 
+// Exercise  10
+long countStackElements(ele* &stos) {
+
+	ele* ptr = new ele;
+	ptr = stos;
+	long counter = 0;
+
+	while (stos) {
+		++counter;
+		stos = stos->nast;
+	}
+
+	return counter;
+}
+
 
 // Exercise 11
 void destroy_stack(ele* &stos) {

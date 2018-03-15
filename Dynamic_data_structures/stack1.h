@@ -3,7 +3,7 @@
 // Part II of Algorithms and Data Structures
 // Uniwersytet Slaski 
 
-// Exercises 1 , 3 , 4 , 11 - ele
+// Exercises 1 , 3 , 4 , 5 , 10 , 11
 
 
 #pragma once
@@ -28,3 +28,5 @@ bool isEmpty(ele* stos);
 void testStack();
 void stack_commands(string str);
 void destroy_stack(ele* &stos);
+long countStackElements(ele* &stos);
+void stacks2queue();
