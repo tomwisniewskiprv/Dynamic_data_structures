@@ -3,7 +3,7 @@
 // Part II of Algorithms and Data Structures
 // Uniwersytet Slaski 
 
-// Exercise 2 , 12 , 13 - Queue 
+// Exercise 2 , 6 , 12 , 13 - Queue 
 
 #include "queue1.h"
 
@@ -183,7 +183,6 @@ void joinQueues(ele* &poczkol, ele* &konkol, ele* &pocznast, ele* &konnast) {
 
 
 // Exercise 13
-
 void testQueueE13() {
 
 	const int QUEUE_MAX = 5;
@@ -245,4 +244,90 @@ void reverseQueue(ele* &poczkol, ele* &konkol) {
 
 }
 
+// Exercise 6
 
+// static queue
+struct stQueue {
+
+	static const int TAB_SIZE = 10;  // faktyczna pojemnoœæ tablicy rowna jest (tab_size - 1), poniewaz head jest zawsze pusty
+	int data[TAB_SIZE];
+	int head = 0, tail = 0;			 // wskazniki pozycji 
+};
+
+// dodanie na koncu, -1 kolejka pelna
+int staticEnqueue(stQueue* que, int value) {
+
+	if (que->head == que->tail) {
+		if (que->tail + 1 < que->TAB_SIZE) {
+			que->tail += 1;
+			que->data[que->tail] = value;
+			return value;
+		}
+		else if (que->head && que->tail + 1 == que->TAB_SIZE) {
+			que->tail = 0;
+			que->data[que->tail] = value;
+			return value;
+		}
+		else return -1;
+	}
+	else if (que->tail + 1 != que->head && que->tail + 1 != que->TAB_SIZE) {
+		que->tail += 1;
+		que->data[que->tail] = value;
+
+		return value;
+	}
+	else if (que->tail + 1 == que->head)
+		return -1;
+	else if (que->tail + 1 == que->TAB_SIZE) {
+		if (que->head) {
+			que->tail = 0;
+			que->data[que->tail] = value;
+			return value;
+		}
+		else
+			return -1;
+	}
+}
+
+// zdjecie z przodu , -2 kolejka pusta
+int staticDequeue(stQueue* que) {
+	if (que->head == que->tail)
+		return -2;
+	else if (que->head + 1 < que->TAB_SIZE) {
+		que->head += 1;
+		return que->data[que->head];
+	}
+	else {
+		que->head = 0;
+		return que->data[que->head];
+	}
+}
+
+
+// testing staticQueue
+void staticQueue() {
+
+	stQueue queue;
+
+	for (int i = 0; i < queue.TAB_SIZE; i++)
+		cout << staticEnqueue(&queue, i) << " i=  " << i << endl;
+
+	cout << endl;
+
+	for (int i = 0; i < queue.TAB_SIZE ; i++)
+		cout << staticDequeue(&queue) << " ";
+
+	cout << endl;
+
+	cout << queue.head << " " << queue.tail << endl; // h 9 t 9
+
+		cout << staticEnqueue(&queue, 22) << " i=  " << 22 << endl;
+
+	cout << queue.head << " " << queue.tail << endl; // h 9 t 0
+
+		cout << staticDequeue(&queue) << " ";
+
+	cout << queue.head << " " << queue.tail << endl; // h 0 t 0
+
+	cout << endl;
+}

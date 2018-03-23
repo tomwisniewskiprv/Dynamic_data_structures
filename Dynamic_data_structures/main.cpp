@@ -4,7 +4,7 @@
 // Uniwersytet Slaski 
 
 // Solutions for exercises:
-// 1 , 3 , 4 , 5 , 10 , 11 , 12 , 13 - Stack and Queue
+// 1 , 2 , 3 , 4 , 5 , 6 , 10 , 11 , 12 , 13 - Stack and Queue
 
 #include "stack1.h"
 #include "queue1.h"
@@ -45,7 +45,10 @@ int main() {
 	cout << "Zadanie 5:" << endl;
 	stacks2queue();
 
-
+	//ex 6
+	cout << "==============================================" << endl;
+	cout << "Zadanie 6:" << endl;
+	staticQueue();
 
 	system("pause");
 	return 0;
