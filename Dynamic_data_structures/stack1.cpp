@@ -6,6 +6,7 @@
 // Exercises 1 , 3 , 4 , 5 , 10 , 11 
 
 #include "stack1.h"
+#include "queue1.h"
 
 void push(ele* &stos, int value) {
 
@@ -84,6 +85,7 @@ void testStack() {
 	destroy_stack(stack);
 }
 
+//============================================== 
 // Exercise 3 , 4 - ele commands
 void stack_commands(string str) {
 
@@ -134,7 +136,7 @@ void stacks2queue() {
 		s2qEnqueue(s2queue, i);
 	}
 
-	cout << "Peek at sIn : " << peek(s2queue->sIn) << endl ;
+	cout << "Peek at sIn : " << peek(s2queue->sIn) << endl;
 	cout << "Proba zdjecia z kolejki zlozonej z dwoch stosow wiekszej liczby elementow." << endl;
 
 	for (int i = 0; i < STACK_SIZE + 2; i++) {
@@ -160,6 +162,7 @@ long countStackElements(ele* &stos) {
 }
 
 
+//============================================== 
 // Exercise 11
 void destroy_stack(ele* &stos) {
 
@@ -174,4 +177,51 @@ void destroy_stack(ele* &stos) {
 
 }
 
+//============================================== 
+// Exercise 7
+void ex7() {
 
+	const int STACK_SIZE = 5;
+	ele* stack = nullptr; // Inicjalizacja zmiennej stosu
+	ele* stack2 = nullptr;
+
+	ele *head = nullptr;  // Inicjalizacja kolejki
+	ele *tail = nullptr;
+
+	cout << "Stack1 i Stack2:\n";
+	for (int i = 0; i < STACK_SIZE; i++) {
+		push(stack, i);
+		push(stack2, i);
+		cout << peek(stack) << " " << stack->nast << " (peek at top)" << endl;
+	}
+	cout << endl;
+
+	// 7B - odwrocenie elementow za pomoca kolejki
+	while (!isEmpty(stack)) {
+		add(head, tail, pop(stack));
+	}
+
+	while (!isEmptyQ(head)) {
+		push(stack, next(head, tail));
+	}
+
+	cout << endl;
+
+	// 7A Odwrocenie za pomoca stosu - przepiecie na inny stos ;)
+	cout << "7A Odwrocenie za pomoca stosu - przepiecie na inny stos ;)" << endl;
+	while (stack)
+		pop(stack);
+
+	while (!isEmpty(stack2)) {
+		push(stack, pop(stack2));
+		cout << peek(stack) << " ";
+	}
+
+	stack2 = stack;
+
+	cout << "\nStack2 po odwroceniu: " << endl;
+	while (stack2)
+		cout << pop(stack2) << " ";
+	cout << endl;
+
+}

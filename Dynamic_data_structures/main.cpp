@@ -50,6 +50,11 @@ int main() {
 	cout << "Zadanie 6:" << endl;
 	staticQueue();
 
+	//ex 7
+	cout << "==============================================" << endl;
+	cout << "Zadanie 7:" << endl;
+	ex7();
+
 	system("pause");
 	return 0;
 }

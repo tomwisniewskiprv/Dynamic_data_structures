@@ -30,3 +30,4 @@ void stack_commands(string str);
 void destroy_stack(ele* &stos);
 long countStackElements(ele* &stos);
 void stacks2queue();
+void ex7();
