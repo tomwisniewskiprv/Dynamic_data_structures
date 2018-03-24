@@ -118,11 +118,16 @@ void s2qEnqueue(s2q* &que, int value) {
 
 // returns first value in queue (pop @ front)
 int  s2qDequeue(s2q* &que) {
-	while (que->sIn) {
-		push(que->sOut, pop(que->sIn));
+
+	if (que->sOut)
+		return pop(que->sOut);
+	else {
+		while (que->sIn) {
+			push(que->sOut, pop(que->sIn));
+		}
+		return pop(que->sOut);
 	}
 
-	return pop(que->sOut);
 }
 
 void stacks2queue() {
