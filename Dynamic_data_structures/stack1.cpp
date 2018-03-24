@@ -169,7 +169,6 @@ void destroy_stack(ele* &stos) {
 	while (stos) {
 		cout << pop(stos) << endl;
 	}
-	delete stos;
 	cout << "==============================================" << endl;
 	cout << "Zadanie 11:" << endl;
 	cout << "Stos wyczyszczony i usuniety. " << stos << endl;
@@ -180,6 +179,7 @@ void destroy_stack(ele* &stos) {
 //============================================== 
 // Exercise 7
 void ex7() {
+	bool success = 0;
 
 	const int STACK_SIZE = 5;
 	ele* stack = nullptr; // Inicjalizacja zmiennej stosu
@@ -202,7 +202,7 @@ void ex7() {
 	}
 
 	while (!isEmptyQ(head)) {
-		push(stack, next(head, tail));
+		push(stack, next(head, tail, success));
 	}
 
 	cout << endl;

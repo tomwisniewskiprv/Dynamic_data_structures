@@ -12,7 +12,7 @@ using namespace std;
 
 
 void add(ele* &poczkol, ele* &konkol, int x);
-int next(ele* &poczkol, ele* &konkol);
+int next(ele* &poczkol, ele* &konkol, bool &sukces);
 int firstEl(ele* poczkol);
 bool isEmptyQ(ele* poczkol);
 

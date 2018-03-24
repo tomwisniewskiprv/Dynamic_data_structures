@@ -11,20 +11,17 @@
 // dodanie elementu do kolejki
 void add(ele* &poczkol, ele* &konkol, int x) {
 
-	if (poczkol == nullptr && konkol == nullptr) {
-		konkol = new ele;
-		konkol->dane = x;
-		konkol->nast = nullptr;
-		poczkol = konkol;
-	}
+	ele* nowy = new ele;
+	nowy->dane = x;
+	nowy->nast = nullptr;
+
+	if (poczkol == nullptr)
+		poczkol = konkol = nowy;
+
 	else {
-		ele *nowy = new ele;
-		nowy->dane = x;
-		nowy->nast = nullptr;
 		konkol->nast = nowy;
 		konkol = nowy;
 	}
-
 }
 
 // pobranie pierwszego elementu kolejki i zwrócenie go jako wartoœci funkcji
@@ -34,28 +31,19 @@ void add(ele* &poczkol, ele* &konkol, int x) {
 	zwracajac kolejke w stan pusty, jak bezposrednio po utworzeniu.
 
 */
-int next(ele* &poczkol, ele* &konkol) {
+int next(ele* &poczkol, ele* &konkol, bool &sukces) {
 
-	if (poczkol) {
-
-		if (poczkol == konkol) {
-			int dane = konkol->dane;
-			poczkol = konkol = nullptr;
-			delete poczkol;
-			delete konkol;
-
-			return dane;
-		}
-
-		int dane = poczkol->dane;
-		ele *p = poczkol;
-		poczkol = p->nast;
-		delete p;
-
-		return dane;
+	if (poczkol) { 
+		int data = poczkol->dane;
+		ele *tmp = new ele;
+		tmp = poczkol;
+		poczkol = poczkol->nast;
+		delete tmp;
+		return data;
 	}
 	else {
-		return -1;
+		sukces = 0;
+		return  -1;
 	}
 }
 
@@ -84,6 +72,7 @@ void testQueue() {
 
 	ele *head = nullptr;
 	ele *tail = nullptr;
+	bool success = 0;
 
 	// Zapelnienie kolejki wartosciami
 	cout << "Zapelnienie kolejki " << QUEUE_MAX << " wartosciami." << endl;
@@ -97,7 +86,7 @@ void testQueue() {
 	// Zdjecie z kolejki wiekszej ilosci elementow niz jest zainicjalizowanych 
 	cout << "Zdjecie z kolejki wiekszej ilosci elementow niz jest zainicjalizowanych." << endl;
 	for (int i = 0; i < QUEUE_MAX + 2; i++) {
-		cout << next(head, tail) << " ";
+		cout << next(head, tail, success) << " ";
 	}
 	cout << endl;
 
@@ -108,8 +97,6 @@ void testQueue() {
 	cout << "==============================================" << endl;
 	cout << "Zadanie 12:" << endl;
 
-	delete head;
-	delete tail;
 	head = nullptr;
 	tail = nullptr;
 
@@ -126,7 +113,7 @@ void testQueue() {
 
 	cout << "Zdjecie z polaczonej kolejki wszystich elementow." << endl;
 	for (int i = 0; i < QUEUE_MAX + ADD_ELEMENTS; i++) {
-		cout << next(head, tail) << " ";
+		cout << next(head, tail,success) << " ";
 	}
 	cout << endl;
 
@@ -184,6 +171,7 @@ void joinQueues(ele* &poczkol, ele* &konkol, ele* &pocznast, ele* &konnast) {
 
 // Exercise 13
 void testQueueE13() {
+	bool success = 0;
 
 	const int QUEUE_MAX = 5;
 	const int ADD_ELEMENTS = 5;
@@ -201,7 +189,7 @@ void testQueueE13() {
 
 	cout << "Zdjecie elemntow z odwroconej kolejki." << endl;
 	for (int i = 0; i < QUEUE_MAX + ADD_ELEMENTS; i++) {
-		cout << next(head, tail) << " ";
+		cout << next(head, tail , success) << " ";
 	}
 	cout << endl;
 }
