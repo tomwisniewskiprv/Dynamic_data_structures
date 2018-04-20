@@ -6,8 +6,27 @@
 // Solutions for exercises:
 // 1 , 2 , 3 , 4 , 5 , 6 , 10 , 11 , 12 , 13 - Stack and Queue
 
+/* 
+g++ notes:
+there are two stages to create exetutable:
+
+1)
+- compile source to object files
+	g++ main.cpp list1.cpp queue1.cpp stack1.cpp -o output
+
+- link object files together to from an executable
+	g++ *.o -o executable
+
+2) or shorter :
+	g++ *.cpp -o output
+	
+	should create output.exe
+
+*/
+
 #include "stack1.h"
 #include "queue1.h"
+using namespace std;
 
 int main() {
 	srand(time(nullptr));

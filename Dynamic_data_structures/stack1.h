@@ -5,20 +5,14 @@
 
 // Exercises 1 , 3 , 4 , 5 , 10 , 11
 
-
-#pragma once
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
 #include <iomanip>
+#include "element.h"
 using namespace std;
 
 long rng(int range);
-
-struct ele {
-	int dane = 0;
-	ele* nast = nullptr;
-};
 
 void push(ele* &stos, int value);
 int pop(ele* &stos);

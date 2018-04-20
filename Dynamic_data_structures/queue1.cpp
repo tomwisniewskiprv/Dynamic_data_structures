@@ -275,6 +275,8 @@ int staticEnqueue(stQueue* que, int value) {
 		else
 			return -1;
 	}
+
+	return -1;
 }
 
 // zdjecie z przodu , -2 kolejka pusta
