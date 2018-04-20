@@ -14,7 +14,7 @@ there are two stages to create exetutable:
 - compile source to object files
 	g++ main.cpp list1.cpp queue1.cpp stack1.cpp -o output
 
-- link object files together to from an executable
+- link object files together to form an executable
 	g++ *.o -o executable
 
 2) or shorter :
@@ -24,8 +24,8 @@ there are two stages to create exetutable:
 
 */
 
-#include "stack1.h"
-#include "queue1.h"
+#include "stack.h"
+#include "queue.h"
 using namespace std;
 
 int main() {

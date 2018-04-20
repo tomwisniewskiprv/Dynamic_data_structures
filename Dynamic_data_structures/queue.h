@@ -5,7 +5,10 @@
 
 // Exercise 2 , 6 , 12 , 13 - Queue 
 
-#include "stack1.h"
+#ifndef _QUEUE_H_
+#define _QUEUE_H_
+
+#include "stack.h"
 using namespace std;
 
 void add(ele* &poczkol, ele* &konkol, int x);
@@ -20,3 +23,4 @@ void testQueue();
 void testQueueE13();
 
 void staticQueue(); // Exercise 6
+#endif // !_QUEUE_H_

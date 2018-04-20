@@ -5,7 +5,7 @@
 
 // Exercise 2 , 6 , 12 , 13 - Queue 
 
-#include "queue1.h"
+#include "queue.h"
 
 
 // dodanie elementu do kolejki

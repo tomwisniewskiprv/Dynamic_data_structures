@@ -5,8 +5,8 @@
 
 // Exercises 1 , 3 , 4 , 5 , 10 , 11 
 
-#include "stack1.h"
-#include "queue1.h"
+#include "stack.h"
+#include "queue.h"
 
 void push(ele* &stos, int value) {
 

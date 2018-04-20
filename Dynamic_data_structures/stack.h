@@ -5,6 +5,9 @@
 
 // Exercises 1 , 3 , 4 , 5 , 10 , 11
 
+#ifndef _STACK_H_
+#define _STACK_H_
+
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -25,3 +28,6 @@ void destroy_stack(ele* &stos);
 long countStackElements(ele* &stos);
 void stacks2queue();
 void ex7();
+
+
+#endif // !_STACK_H_
