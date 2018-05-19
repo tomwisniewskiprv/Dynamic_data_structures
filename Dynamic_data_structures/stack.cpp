@@ -5,23 +5,28 @@
 
 // Exercises 1 , 3 , 4 , 5 , 10 , 11 
 
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
+
 #include "stack.h"
 #include "queue.h"
 
-void push(ele* &stos, int value) {
+void push(Node* &stos, int value) {
 
-	ele *new_top = new ele;
-	new_top->dane = value;
-	new_top->nast = stos;
+	Node *new_top = new Node;
+	new_top->item = value;
+	new_top->next = stos;
 
 	stos = new_top;
 }
 
-int pop(ele* &stos) {
+int pop(Node* &stos) {
 	if (stos) {
-		ele *old_top = stos;
-		int result = stos->dane;
-		stos = stos->nast;
+		Node *old_top = stos;
+		int result = stos->item;
+		stos = stos->next;
 		delete old_top;
 
 		return result;
@@ -32,47 +37,47 @@ int pop(ele* &stos) {
 	}
 }
 
-int peek(ele* stos) {
+int peek(Node* stos) {
 	if (stos) {
-		return stos->dane;
+		return stos->item;
 	}
 	else {
 		return -1;
 	}
 }
 
-bool isEmpty(ele* stos) {
+bool isEmpty(Node* stos) {
 	return (!stos);
 }
 
-long rng(int range) {
+long randomInt(int range) {
 	return rand() % range;
 }
 
 void testStack() {
 
 	const int STACK_SIZE = 3;
-	ele* stack = nullptr; // Inicjalizacja zmiennej stosu
+	Node *stack = nullptr; // Inicjalizacja zmiennej stosu
 	cout << "----------------------------------------------" << endl;
 	cout << "Utworzenie pustego stosu." << endl;
 	cout << stack << endl;
 
 	// Zapelnienie stosu kolejnymi wartosciami
 	cout << "----------------------------------------------" << endl;
-	cout << "Dodanie funkcja PUSH " << STACK_SIZE << " elementow." << endl;
+	cout << "Dodanie funkcja PUSH " << STACK_SIZE << " Nodementow." << endl;
 
 	for (int i = 0; i < STACK_SIZE; i++) {
 		push(stack, i);
-		cout << peek(stack) << " " << stack->nast << " (peek at top)" << endl;
+		cout << peek(stack) << " " << stack->next << " (peek at top)" << endl;
 	}
 	cout << endl;
 
 	cout << "----------------------------------------------" << endl;
-	cout << "Zliczenie elementow na stosie :" << countStackElements(stack) << endl;
+	cout << "Zliczenie Nodementow na stosie :" << countStackElements(stack) << endl;
 
-	// Zdjecie elementow ze stosu
+	// Zdjecie Nodementow ze stosu
 	cout << "----------------------------------------------" << endl;
-	cout << "Proba zdjecia funkcja POP " << STACK_SIZE + 1 << " elementow." << endl;
+	cout << "Proba zdjecia funkcja POP " << STACK_SIZE + 1 << " Nodementow." << endl;
 
 	for (int i = 1; i < STACK_SIZE + 1; i++) {
 		cout << setw(3) << pop(stack) << " (pop) | ";
@@ -81,15 +86,15 @@ void testStack() {
 	}
 
 	// Exercise 11
-	// Usuniecie wszystkich elementow na stosie oraz usuniecie obiektu stosu
-	destroy_stack(stack);
+	// Usuniecie wszystkich Nodementow na stosie oraz usuniecie obiektu stosu
+	destroyStack(stack);
 }
 
 //============================================== 
-// Exercise 3 , 4 - ele commands
-void stack_commands(string str) {
+// Exercise 3 , 4 - Node commands
+void stackCommands(string str) {
 
-	ele* stack = new ele;
+	Node *stack = new Node;
 
 	for (int i = 0; i < (int)str.size(); i++) {
 		if (str[i] == '*') {
@@ -106,12 +111,12 @@ void stack_commands(string str) {
 // Exercise  5
 
 struct s2q {
-	ele* sIn = nullptr;
-	ele* sOut = nullptr;
+	Node *sIn = nullptr;
+	Node *sOut = nullptr;
 };
 
 
-// adds new value at the end (push @ end)
+// enqueues new value at the end (push @ end)
 void s2qEnqueue(s2q* &que, int value) {
 	push(que->sIn, value);
 }
@@ -142,7 +147,7 @@ void stacks2queue() {
 	}
 
 	cout << "Peek at sIn : " << peek(s2queue->sIn) << endl;
-	cout << "Proba zdjecia z kolejki zlozonej z dwoch stosow wiekszej liczby elementow." << endl;
+	cout << "Proba zdjecia z kolejki zlozonej z dwoch stosow wiekszej liczby Nodementow." << endl;
 
 	for (int i = 0; i < STACK_SIZE + 2; i++) {
 		cout << s2qDequeue(s2queue) << " ";
@@ -152,15 +157,15 @@ void stacks2queue() {
 
 //============================================== 
 // Exercise  10
-long countStackElements(ele* &stos) {
+long countStackElements(Node* &stos) {
 
-	ele* ptr = new ele;
+	Node *ptr = new Node;
 	ptr = stos;
 	long counter = 0;
 
 	while (stos) {
 		++counter;
-		stos = stos->nast;
+		stos = stos->next;
 	}
 
 	return counter;
@@ -169,7 +174,7 @@ long countStackElements(ele* &stos) {
 
 //============================================== 
 // Exercise 11
-void destroy_stack(ele* &stos) {
+void destroyStack(Node* &stos) {
 
 	while (stos) {
 		cout << pop(stos) << endl;
@@ -187,27 +192,27 @@ void ex7() {
 	bool success = 0;
 
 	const int STACK_SIZE = 5;
-	ele* stack = nullptr; // Inicjalizacja zmiennej stosu
-	ele* stack2 = nullptr;
+	Node *stack = nullptr; // Inicjalizacja zmiennej stosu
+	Node *stack2 = nullptr;
 
-	ele *head = nullptr;  // Inicjalizacja kolejki
-	ele *tail = nullptr;
+	Node *head = nullptr;  // Inicjalizacja kolejki
+	Node *tail = nullptr;
 
 	cout << "Stack1 i Stack2:\n";
 	for (int i = 0; i < STACK_SIZE; i++) {
 		push(stack, i);
 		push(stack2, i);
-		cout << peek(stack) << " " << stack->nast << " (peek at top)" << endl;
+		cout << peek(stack) << " " << stack->next << " (peek at top)" << endl;
 	}
 	cout << endl;
 
-	// 7B - odwrocenie elementow za pomoca kolejki
+	// 7B - odwrocenie Nodementow za pomoca kolejki
 	while (!isEmpty(stack)) {
-		add(head, tail, pop(stack));
+		enqueue(head, tail, pop(stack));
 	}
 
 	while (!isEmptyQ(head)) {
-		push(stack, next(head, tail, success));
+		push(stack, dequeue(head, tail, success));
 	}
 
 	cout << endl;

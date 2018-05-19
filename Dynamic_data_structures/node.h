@@ -5,9 +5,15 @@
 
 #pragma once
 
+#ifndef _NODE_H_
+#define _NODE_H_
+
 // Node struct used in stacks and queues.
-// 'ele' is an abberation of 'element'.
-struct ele {
-	int dane = 0;
-	ele* nast = nullptr;
+// 'Node' is an abberation of 'Nodement'.
+struct Node
+{
+	int item = 0;
+	Node* next = nullptr;
 };
+
+#endif

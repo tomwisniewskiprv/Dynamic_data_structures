@@ -23,13 +23,16 @@ there are two stages to create exetutable:
 	should create output.exe
 
 */
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
 
 #include "stack.h"
 #include "queue.h"
 using namespace std;
 
-int main() {
-	srand(time(nullptr));
+void executeStackAndQueues() {
 
 	string commands = "EAS*Y*QUE***ST***IO*N***";
 	string commands2 = "EA*S*Y**";
@@ -52,12 +55,12 @@ int main() {
 	//ex 3
 	cout << "==============================================" << endl;
 	cout << "Zadanie 3:" << endl;
-	stack_commands(commands);
+	stackCommands(commands);
 
 	//ex 4
 	cout << "==============================================" << endl;
 	cout << "Zadanie 4:" << endl;
-	stack_commands(commands2);
+	stackCommands(commands2);
 
 	//ex 5
 	cout << "==============================================" << endl;
@@ -73,6 +76,16 @@ int main() {
 	cout << "==============================================" << endl;
 	cout << "Zadanie 7:" << endl;
 	ex7();
+}
+
+int main() {
+	srand((unsigned int)time(nullptr));
+
+	executeStackAndQueues();
+
+
+
+
 
 	system("pause");
 	return 0;

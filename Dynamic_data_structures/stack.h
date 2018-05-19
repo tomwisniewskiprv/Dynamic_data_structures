@@ -8,24 +8,21 @@
 #ifndef _STACK_H_
 #define _STACK_H_
 
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <iomanip>
-#include "element.h"
+#include "node.h"
+
 using namespace std;
 
-long rng(int range);
+long randomInt(int range);
 
-void push(ele* &stos, int value);
-int pop(ele* &stos);
-int peek(ele* stos);
-bool isEmpty(ele* stos);
+void push(Node* &stos, int value);
+int pop(Node* &stos);
+int peek(Node* stos);
+bool isEmpty(Node* stos);
 
 void testStack();
-void stack_commands(string str);
-void destroy_stack(ele* &stos);
-long countStackElements(ele* &stos);
+void stackCommands(string str);
+void destroyStack(Node* &stos);
+long countStackElements(Node* &stos);
 void stacks2queue();
 void ex7();
 

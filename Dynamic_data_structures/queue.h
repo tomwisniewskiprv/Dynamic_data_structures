@@ -11,13 +11,13 @@
 #include "stack.h"
 using namespace std;
 
-void add(ele* &poczkol, ele* &konkol, int x);
-int next(ele* &poczkol, ele* &konkol, bool &sukces);
-int firstEl(ele* poczkol);
-bool isEmptyQ(ele* poczkol);
+void enqueue(Node* &front, Node* &read, int x);
+int dequeue(Node* &front, Node* &read, bool &success);
+int firstEl(Node* front);
+bool isEmptyQ(Node* front);
 
-void joinQueues(ele* &poczkol, ele* &konkol, ele* &pocznast, ele* &konnast); // Exercise 12
-void reverseQueue(ele* &poczkol, ele* &konkol); // Exercise 13
+void joinQueues(Node* &front, Node* &read, Node* &frontNext, Node* &rearNext); // Exercise 12
+void reverseQueue(Node* &front, Node* &read); // Exercise 13
 
 void testQueue();
 void testQueueE13();
