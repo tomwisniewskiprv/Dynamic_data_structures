@@ -8,12 +8,11 @@
 #ifndef _NODE_H_
 #define _NODE_H_
 
-// Node struct used in stacks and queues.
-// 'Node' is an abberation of 'Nodement'.
+// Basic data structure
 struct Node
 {
 	int item = 0;
-	Node* next = nullptr;
+	Node *next = nullptr;
 };
 
 #endif

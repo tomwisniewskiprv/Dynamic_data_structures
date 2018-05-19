@@ -11,7 +11,8 @@
 #include <iomanip>
 
 #include "stack.h"
-#include "queue.h"
+#include "queue.h" 
+#include "randomInt.h"
 
 void push(Node* &stos, int value) {
 
@@ -50,9 +51,6 @@ bool isEmpty(Node* stos) {
 	return (!stos);
 }
 
-long randomInt(int range) {
-	return rand() % range;
-}
 
 void testStack() {
 
@@ -64,7 +62,7 @@ void testStack() {
 
 	// Zapelnienie stosu kolejnymi wartosciami
 	cout << "----------------------------------------------" << endl;
-	cout << "Dodanie funkcja PUSH " << STACK_SIZE << " Nodementow." << endl;
+	cout << "Dodanie funkcja PUSH " << STACK_SIZE << " elementow." << endl;
 
 	for (int i = 0; i < STACK_SIZE; i++) {
 		push(stack, i);
@@ -73,11 +71,11 @@ void testStack() {
 	cout << endl;
 
 	cout << "----------------------------------------------" << endl;
-	cout << "Zliczenie Nodementow na stosie :" << countStackElements(stack) << endl;
+	cout << "Zliczenie elementow na stosie :" << countStackElements(stack) << endl;
 
-	// Zdjecie Nodementow ze stosu
+	// Zdjecie elementow ze stosu
 	cout << "----------------------------------------------" << endl;
-	cout << "Proba zdjecia funkcja POP " << STACK_SIZE + 1 << " Nodementow." << endl;
+	cout << "Proba zdjecia funkcja POP " << STACK_SIZE + 1 << " elementow." << endl;
 
 	for (int i = 1; i < STACK_SIZE + 1; i++) {
 		cout << setw(3) << pop(stack) << " (pop) | ";
@@ -86,7 +84,7 @@ void testStack() {
 	}
 
 	// Exercise 11
-	// Usuniecie wszystkich Nodementow na stosie oraz usuniecie obiektu stosu
+	// Usuniecie wszystkich elementow na stosie oraz usuniecie obiektu stosu
 	destroyStack(stack);
 }
 
@@ -114,7 +112,6 @@ struct s2q {
 	Node *sIn = nullptr;
 	Node *sOut = nullptr;
 };
-
 
 // enqueues new value at the end (push @ end)
 void s2qEnqueue(s2q* &que, int value) {
@@ -147,7 +144,7 @@ void stacks2queue() {
 	}
 
 	cout << "Peek at sIn : " << peek(s2queue->sIn) << endl;
-	cout << "Proba zdjecia z kolejki zlozonej z dwoch stosow wiekszej liczby Nodementow." << endl;
+	cout << "Proba zdjecia z kolejki zlozonej z dwoch stosow wiekszej liczby elementow." << endl;
 
 	for (int i = 0; i < STACK_SIZE + 2; i++) {
 		cout << s2qDequeue(s2queue) << " ";
@@ -170,7 +167,6 @@ long countStackElements(Node* &stos) {
 
 	return counter;
 }
-
 
 //============================================== 
 // Exercise 11
@@ -206,7 +202,7 @@ void ex7() {
 	}
 	cout << endl;
 
-	// 7B - odwrocenie Nodementow za pomoca kolejki
+	// 7B - odwrocenie elementow za pomoca kolejki
 	while (!isEmpty(stack)) {
 		enqueue(head, tail, pop(stack));
 	}

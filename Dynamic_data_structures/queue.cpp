@@ -11,10 +11,10 @@
 #include <iomanip>
 
 #include "queue.h"
-
+#include "randomInt.h"
 
 // enqueue
-// dodanie Nodementu do kolejki
+// dodanie elementu do kolejki
 void enqueue(Node* &front, Node* &rear, int x) {
 
 	Node *tmp = new Node;
@@ -31,7 +31,7 @@ void enqueue(Node* &front, Node* &rear, int x) {
 }
 
 // dequeue
-// pobranie pierwszego Nodementu kolejki i zwrócenie go jako wartoœci funkcji
+// pobranie pierwszego elementu kolejki i zwrócenie go jako wartoœci funkcji
 /*
 	Funkcja pobiera item z poczatku kolejki oraz kasuje obiekt po zaczytaniu danych.
 	Jezeli napotka koniec to po zwroceniu danych zwolni pamiec zarowno poczatku jak i konca kolejki,
@@ -54,7 +54,7 @@ int dequeue(Node* &front, Node* &rear, bool &success) {
 	}
 }
 
-// zwrócenie (wartoœci) Nodementu z pocz¹tku kolejki bez jego usuwania
+// zwrócenie (wartoœci) elementu z pocz¹tku kolejki bez jego usuwania
 int firstEl(Node* front) {
 
 	if (front) {
@@ -90,8 +90,8 @@ void testQueue() {
 	// Sprawdzenie czy kolejka jest pusta
 	cout << (isEmptyQ(head) ? "Kolejka jest pusta." : "Kolejka nie jest pusta.") << endl;
 
-	// Zdjecie z kolejki wiekszej ilosci Nodementow niz jest zainicjalizowanych 
-	cout << "Zdjecie z kolejki wiekszej ilosci Nodementow niz jest zainicjalizowanych." << endl;
+	// Zdjecie z kolejki wiekszej ilosci elementow niz jest zainicjalizowanych 
+	cout << "Zdjecie z kolejki wiekszej ilosci elementow niz jest zainicjalizowanych." << endl;
 	for (int i = 0; i < QUEUE_MAX + 2; i++) {
 		cout << dequeue(head, tail, success) << " ";
 	}
@@ -118,7 +118,7 @@ void testQueue() {
 
 	joinQueues(head, tail, head2, tail2);
 
-	cout << "Zdjecie z polaczonej kolejki wszystich Nodementow." << endl;
+	cout << "Zdjecie z polaczonej kolejki wszystich elementow." << endl;
 	for (int i = 0; i < QUEUE_MAX + ADD_ELEMENTS; i++) {
 		cout << dequeue(head, tail,success) << " ";
 	}
