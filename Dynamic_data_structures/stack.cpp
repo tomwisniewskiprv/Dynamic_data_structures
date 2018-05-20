@@ -51,7 +51,6 @@ bool isEmpty(Node* stos) {
 	return (!stos);
 }
 
-
 void testStack() {
 
 	const int STACK_SIZE = 3;

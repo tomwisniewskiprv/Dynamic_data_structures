@@ -80,7 +80,7 @@ void executeStackAndQueues() {
 	ex7();
 }
 void executeLists() {
-	listEx1();
+	listFirstPart();
 }
 
 // Program entry point
