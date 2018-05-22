@@ -14,6 +14,7 @@ int listSize(Node* &list);
 // Exercise 3
 void print(Node* list);
 
+// Execute all exercises
 void listFirstPart();
 
 #endif // _LIST_H_

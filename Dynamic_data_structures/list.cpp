@@ -19,6 +19,7 @@ using namespace std;
 
 // Zwraca ilosc elementow w liscie, czyli dlugosc
 int listSize(Node* &list) {
+
 	Node *tmp = list;
 	int size = 0;
 
@@ -93,6 +94,7 @@ void remove(int i, Node* &list) {
 // Odczytuje element o indeksie i bez usuwania
 // zwraca -1 jezeli proba odczytu nastapi do indeksu poza tablica
 int read(int i, Node *list) {
+
 	Node *current = list;
 	int element = 1;
 
@@ -124,6 +126,7 @@ Node *search(int x, Node *list) {
 
 // Wypisuje wszystkie elementy listy
 void print(Node* list) {
+
 	Node *node = list;
 
 	while (node) {
@@ -152,7 +155,7 @@ long getAddres(int k, Node *list) {
 	Node *current = list;
 	int index = 1; // element index/ position in list
 
-	while (index != k && current) {
+	while (index != k && current && listSize(list)) {
 		current = current->next;
 		index++;
 	}
@@ -283,10 +286,10 @@ void listFirstPart() {
 	Node *element4 = search(4, list);
 	cout << "test search():\t" << element4->item << endl;
 
-	cout << "test print():\t" << endl;
+    cout << "test print():\t";
 	print(list);
 
-	cout << "test destroy():\t" << endl;
+	cout << "test destroy():\t";
 	destroy(list); // this procedues also deallocs element4 memory
 	cout << listSize(list) << " " << list << endl;
 
@@ -296,16 +299,18 @@ void listFirstPart() {
 		insert(i, 1, list);
 		//insert(randomInt(90) + 1, 1, list);
 	}
-	cout << "New list:" << endl;
+	cout << "New list:";
 	print(list);
-
-	for (int i = 1; i < 10; i++)
+    cout << "test getAddres()" << endl;
+	for (int i = -2; i < 12; i++)
 		cout << i << " " << getAddres(i, list) << endl;
 
 	// 6
+    cout << "test reverseListUsingStack()" << endl;
 	reverseListUsingStack(list);
 
 	// 7 
+    cout << "test reverseListWithoutStack()" << endl;
 	reverseListWithoutStack(list);
 
 	// 8
