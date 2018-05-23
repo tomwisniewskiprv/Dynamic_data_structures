@@ -15,4 +15,12 @@ struct Node
 	Node *next = nullptr;
 };
 
+// 23.05.2018 - extended verion, for second part of list's exercises
+// extended node
+struct DoublyLinkedNode
+{
+	int item = 0;
+	DoublyLinkedNode *next = nullptr;
+    DoublyLinkedNode *prev = nullptr;
+};
 #endif

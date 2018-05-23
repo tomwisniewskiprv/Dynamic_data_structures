@@ -79,7 +79,7 @@ void remove(int i, Node* &list) {
 	}
 	else {
 
-		while ((element + 1) < i) {
+		while (current && (element + 1) < i) {
 			current = current->next;
 			element++;
 		}

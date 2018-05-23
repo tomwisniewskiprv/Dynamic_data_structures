@@ -31,6 +31,7 @@ there are two stages to create exetutable:
 #include "stack.h"
 #include "queue.h"
 #include "list.h"
+#include "list2.h"
 #include "randomInt.h"
 using namespace std;
 
@@ -81,6 +82,7 @@ void executeStackAndQueues() {
 }
 void executeLists() {
 	listFirstPart();
+    listSecondPart();
 }
 
 // Program entry point
