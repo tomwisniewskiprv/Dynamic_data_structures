@@ -185,6 +185,46 @@ void printDLL(DoublyLinkedNode *list) {
     delete node;
 }
 
+// Wyswietla liste cykliczna
+void printLLC(Node *list) {
+    Node *first = list;
+
+    while (first) {
+        cout << first->item << " ";
+        first = first->next;
+
+        if (first == list) {
+            first = nullptr;
+            break;
+        }
+
+    }
+    cout << endl;
+
+    delete first;
+}
+
+// Usuniecie listy cyklicznej
+void deleteLLC(Node* &list) {
+
+    Node *first = list;
+    list = list->next;
+    Node *tmp = nullptr;
+
+    while (list) {
+
+        if (list == first) {
+            delete list;
+            list = nullptr;
+            break;
+        }
+
+        tmp = list;
+        list = list->next;
+        delete tmp;
+    }
+}
+
 // Execute exercises 
 void listSecondPart() {
 
@@ -201,7 +241,6 @@ void listSecondPart() {
 
     popFrontDLL(dll);
     cout << "test popFrontDLL()" << endl;
-
     cout << "test findDLL(): " << findDLL(555, dll) << " " << findDLL(66, dll) << endl;
 
     removeNodeDLL(1, dll);
@@ -209,11 +248,14 @@ void listSecondPart() {
 
     // 3
     Node *linkedList = nullptr;
-    for (int i = 0; i < 3; i++)
+    for (int i = 0; i < 9; i++)
         insert(i, 1, linkedList);
 
     linkedList2CircularLinked(linkedList);
     cout << "test linkedList2CircularLinked()" << endl;
+    printLLC(linkedList);
+    deleteLLC(linkedList);
+    cout << "delete" << endl;
 
     // 4
     doublyLinked2CircularLinked(dll);
@@ -228,6 +270,6 @@ void listSecondPart() {
     reverseDLL(dll2);
     cout << "test reverseDLL()" << endl;
     printDLL(dll2);
-
+    
     delete dll, dll2, linkedList;
 }
